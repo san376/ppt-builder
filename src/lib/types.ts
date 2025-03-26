@@ -79,3 +79,10 @@ export interface OutlineCard {
     id: string
     order: number
 }
+
+export interface LayoutSlides {
+    slideName:  string
+    content: ContentItem
+    className?: string
+    type: string
+}
