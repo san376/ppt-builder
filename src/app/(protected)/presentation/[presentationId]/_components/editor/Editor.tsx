@@ -6,7 +6,8 @@ import { useSlidesStore } from "@/store/useSlideStore";
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { v4 as uuidv4 } from "uuid";
-import MasterRecursiveComponent from "./MasterRecursiveComponent";
+import { MasterRecursiveComponent } from "./MasterRecursiveComponent";
+
 
 interface DropZoneProps {
   index: number;
@@ -93,6 +94,18 @@ export const DraggableSlide: React.FC<DraggableSlideProps> = ({
         }),
         canDrag: isEditable,
       })
+
+
+      const handleContentChange = (
+        contentId: string,
+        newContent: string | string[] | string[][]
+      ) => {
+        console.log('Content changed', slide, contentId, newContent);
+        if (isEditable) {
+          updateContentItem(slide.id, contentId, newContent);
+        }
+      };
+      
       
 
   return (
@@ -112,7 +125,13 @@ export const DraggableSlide: React.FC<DraggableSlideProps> = ({
       onClick={()=> setCurrentSlide(index)}
     >
         <div className="h-full w-full flex-grow overflow-hidden">
-            <MasterRecursiveComponent/>
+            <MasterRecursiveComponent
+            content={slide.content}
+            isPreview={false}
+            slideId={slide.id}
+            isEditable={isEditable}
+            onContentChange={handleContentChange}
+            />
         </div>
     </div>
   );
@@ -176,6 +195,13 @@ const Editor = ({ isEditable }: Props) => {
     }
   }, [currentSlide]);
 
+  const handleDelete = (id: string)=>{
+    if(isEditable){
+      console.log('Deleting',id)
+      removeSlide(id)
+    }
+  }
+
   return (
     <div className="flex-1 flex flex-col h-full max-w-3xl mx-auto px-4 mb-20">
       {loading ? (
@@ -192,7 +218,13 @@ const Editor = ({ isEditable }: Props) => {
             )}
             {orderedSlides.map((slide, index) => (
               <React.Fragment key={slide.id || index}>
-                <DraggableSlide />
+                <DraggableSlide
+                slide={slide}
+                index={index}
+                moveSlide={moveSlide}
+                handleDelete={handleDelete}
+                isEditable={isEditable}
+                />
               </React.Fragment>
             ))}
           </div>
