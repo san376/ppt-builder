@@ -4,6 +4,7 @@ import React, { useCallback } from 'react'
 import {motion} from 'framer-motion'
 import { Heading1 } from '@/components/ui/global/editor/components/Headings'
 import { Value } from '@radix-ui/react-select'
+import { cn } from '@/lib/utils'
 
 type MasterRecursiveComponentProps = {
   content: ContentItem
@@ -49,6 +50,21 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
           <Heading1 {...commonProps}/>
         </motion.div>
         )
+
+        case 'column':
+          if(Array.isArray(content.content)){
+            return (
+              <motion.div
+              {...animationProps}
+                className={cn('w-full h-full flex flex flex-col',
+                  content.className
+                )}
+              >
+                {content.content.length>0 ? '' : ''}
+              </motion.div>
+            )
+          }
+          return null
       default:
         return <h1>Nothing</h1>
     }
