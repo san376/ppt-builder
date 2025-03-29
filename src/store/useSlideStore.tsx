@@ -23,6 +23,13 @@ interface SlideState {
         contentId: string,
         newContent: string | string[] | string[][]
     )=> void
+
+    addComponentInSlide:(
+        slideId: string,
+        item: ContentItem,
+        parentId: string,
+        index: number
+    ) => void
 }
 
 const defaultTheme: Theme = {
@@ -95,6 +102,14 @@ export const useSlidesStore = create(persist<SlideState>((set,get)=>
               
         },
         setCurrentSlide: (index)=> set({currentSlide: index}),
+        addComponentInSlide:(
+            slideId: string,
+            item: ContentItem,
+            parentId: string,
+            index: number
+        )=>{
+
+        },
         reorderSlides: (fromIndex: number, toIndex: number) =>{
             set((state)=>{
                 const newSlides = [...state.slides]

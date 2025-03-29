@@ -19,13 +19,13 @@ type MasterRecursiveComponentProps = {
 }
 
 const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
-  ({ content, onContentChange, slideId, index, isPreview }) => {
+  ({ content, onContentChange, slideId, index, isPreview,isEditable}) => {
 
     const handleChange = useCallback(
       (e: React.ChangeEvent<HTMLTextAreaElement>)=>{
         onContentChange(content.id, e.target.value)
       },
-      [content.id, onContentChange]
+      [content.id, onContentChange] 
     )
 
     const commonProps = {
@@ -56,11 +56,21 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
             return (
               <motion.div
               {...animationProps}
-                className={cn('w-full h-full flex flex flex-col',
+                className={cn('w-full h-full flex flex-col',
                   content.className
                 )}
               >
-                {content.content.length>0 ? '' : ''}
+                {content.content.length>0
+                 ? (content.content as ContentItem[]).map(
+                  (subItem: ContentItem, subIndex: number)=> (
+                    <React.Fragment key={subItem.id || `item-${subIndex}`}>
+                      {!isPreview &&
+                      !subItem.restrictToDrop &&
+                      subIndex === 0 &&
+                      isEditable && <DropZone/>}
+                    </React.Fragment>
+                  )
+                 ) : ''}
               </motion.div>
             )
           }
