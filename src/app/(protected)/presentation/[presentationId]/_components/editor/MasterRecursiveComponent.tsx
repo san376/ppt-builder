@@ -5,6 +5,7 @@ import {motion} from 'framer-motion'
 import { Heading1 } from '@/components/ui/global/editor/components/Headings'
 import { Value } from '@radix-ui/react-select'
 import { cn } from '@/lib/utils'
+import DropZone from './DropZone'
 
 type MasterRecursiveComponentProps = {
   content: ContentItem
