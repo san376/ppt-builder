@@ -105,6 +105,7 @@ export const DraggableSlide: React.FC<DraggableSlideProps> = ({
     console.log("Content changed", slide, contentId, newContent);
     if (isEditable) {
       updateContentItem(slide.id, contentId, newContent);
+      
     }
   };
 
