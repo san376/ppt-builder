@@ -6,6 +6,8 @@ import { Heading1, Heading2, Heading3, Heading4, Title } from '@/components/ui/g
 import { Value } from '@prisma/client/runtime/library'
 import { cn } from '@/lib/utils'
 import DropZone from './DropZone'
+import Paragraph from '@/components/ui/global/editor/components/Paragraph'
+import TabelComponent from '@/components/ui/global/editor/components/TabelComponent'
 
 type MasterRecursiveComponentProps = {
   content: ContentItem
@@ -81,6 +83,39 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
                 <Paragraph {...commonProps} />
               </motion.div>
             )
+          case 'table':
+            return (
+              <motion.div 
+              {...animationProps}
+              className='w-full h-full'
+              >
+                <TabelComponent
+                content={content.content as string[][]}
+                onChange={(newContent)=>
+                  onContentChange(
+                    content.id,
+                    newContent !== null ? newContent: ''
+                  )
+                }
+                initailaRowSize={content.initialColumns}
+                initialColumnSize={content.initialRows} 
+                isPreview={isPreview}
+                isEditable={isEditable}
+                />
+              </motion.div>
+            )  
+
+        case 'resizable-column':
+          if(Array.isArray(content.content)){
+            return (
+              <motion.div 
+              {...animationProps}
+              className='w-full h-full'
+              >
+
+              </motion.div>
+            )
+          }
 
         case 'column':
           if(Array.isArray(content.content)){
