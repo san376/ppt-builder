@@ -2,8 +2,8 @@
 import { ContentItem } from '@/lib/types'
 import React, { useCallback } from 'react'
 import {motion} from 'framer-motion'
-import { Heading1 } from '@/components/ui/global/editor/components/Headings'
-import { Value } from '@radix-ui/react-select'
+import { Heading1, Heading2, Heading3, Heading4, Title } from '@/components/ui/global/editor/components/Headings'
+import { Value } from '@prisma/client/runtime/library'
 import { cn } from '@/lib/utils'
 import DropZone from './DropZone'
 
@@ -31,8 +31,8 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
 
     const commonProps = {
       placeholder: content.placeholder,
-      Value: content.content as string,
-      onchange: handleChange,
+      value: content.content as string,
+      onChange: handleChange,
       isPreview: isPreview,
     }
 
@@ -47,10 +47,40 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
     switch (content.type) {
       case 'heading1':
         return (
-          <motion.div className="w-full h-full">
+          <motion.div className="w-full h-full" {...animationProps}>
           <Heading1 {...commonProps}/>
         </motion.div>
         )
+        case 'heading2':
+        return (
+          <motion.div className="w-full h-full" {...animationProps}>
+          <Heading2 {...commonProps}/>
+        </motion.div>
+        )
+        case 'heading3':
+        return (
+          <motion.div className="w-full h-full" {...animationProps}>
+          <Heading3 {...commonProps}/>
+        </motion.div>
+        )
+        case 'heading4':
+        return (
+          <motion.div className="w-full h-full" {...animationProps}>
+          <Heading4 {...commonProps}/>
+        </motion.div>
+        )
+        case 'title':
+          return (
+            <motion.div {...animationProps} className='w-full h-full'>
+              <Title {...commonProps} />
+            </motion.div>
+          )
+          case 'paragraph':
+            return (
+              <motion.div {...animationProps} className='w-full h-full'>
+                <Paragraph {...commonProps} />
+              </motion.div>
+            )
 
         case 'column':
           if(Array.isArray(content.content)){
@@ -68,20 +98,47 @@ const ContentRenderer: React.FC<MasterRecursiveComponentProps> = React.memo(
                       {!isPreview &&
                       !subItem.restrictToDrop &&
                       subIndex === 0 &&
-                      isEditable && <DropZone
+                      isEditable && (
+                        <DropZone
                         index={0}
                         parentId={content.id}
                         slideId={slideId}
-                      />}
+                      />
+                      )}
+
+                      <MasterRecursiveComponent
+                      content={subItem}
+                      onContentChange={onContentChange}
+                      isPreview={isPreview}
+                      slideId={slideId}
+                      index={subIndex}
+                      isEditable={isEditable}
+                      />
+                      {!isPreview &&
+                      !subItem.restrictToDrop &&
+                      isEditable && (
+                        <DropZone
+                        index={subIndex +1}
+                        parentId={content.id}
+                        slideId={slideId}
+                        />
+                      )}
                     </React.Fragment>
                   )
-                 ) : ''}
+                 ) 
+                 : isEditable ? (
+                  <DropZone
+                  index={0}
+                  parentId={content.id}
+                  slideId={slideId}
+                  />
+                 ) : null}
               </motion.div>
             )
           }
           return null
       default:
-        return <h1>Nothing</h1>
+        return null
     }
   }
 )
