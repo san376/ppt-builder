@@ -1,8 +1,9 @@
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import { ContentItem } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import React, { useState } from "react";
-import { MasterRecursiveComponent } from "./MasterRecursiveComponent";
+import React, { useEffect, useState } from "react";
+import { MasterRecursiveComponent } from "../../../../../app/(protected)/presentation/[presentationId]/_components/editor/MasterRecursiveComponent";
+import {v4 as uuidv4} from 'uuid'
 
 type Props = {
   content: ContentItem[];
@@ -24,7 +25,31 @@ const ColumnComponents = ({
   isPreview = false,
   isEditable = true,
 }: Props) => {
-  const [columns, setColumns] = useState<ContentItem[]>([]);
+  const [columns, setColumns] = useState<ContentItem[]>([])
+
+  const createDefaultColumns = (count: number) => {
+    return Array(count)
+      .fill(null)
+      .map(() => ({
+        id: uuidv4(),
+        type: 'paragraph' as const,
+        name: 'Paragraph',
+        content: '',
+        placeholder: 'Start typing...',
+      }))
+  }
+  
+
+
+  useEffect(()=>{
+    if(content.length === 0){
+        setColumns(createDefaultColumns(2))
+    }
+    else{
+        setColumns(content)
+    }
+  },[content])
+
   return (
     <div className="relative w-full h-full">
       <ResizablePanelGroup
@@ -49,9 +74,7 @@ const ColumnComponents = ({
               </div>
             </ResizablePanel>
             {index < columns.length-1 && isEditable && (
-                <ResizableHandle withHandle={!isPreview}>
-
-                </ResizableHandle>
+                <ResizableHandle withHandle={!isPreview}/>
             )}
           </React.Fragment>
         ))}
