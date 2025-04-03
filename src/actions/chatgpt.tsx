@@ -27,7 +27,7 @@ import { currentUser } from "@clerk/nextjs/server";
 //         "Point 6"
 //     ]
 // }
-//     Ensure that the JSON is valid and properly formatted. Do not include any other 
+//     Ensure that the JSON is valid and properly formatted. Do not include any other
 //     text or explainations outside the JSON.
 // `
 
@@ -65,11 +65,6 @@ import { currentUser } from "@clerk/nextjs/server";
 //   console.error('ERROR', error)
 //   return {status: 500, error:'Internal server error'}
 // }
-
-
-
-
-
 
 // import { GoogleGenerativeAI } from "@google/generative-ai";
 // import "dotenv/config";
@@ -132,15 +127,10 @@ import { currentUser } from "@clerk/nextjs/server";
 //   }
 // };
 
-
-
-
-
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import "dotenv/config";
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from "uuid";
 import { Content } from "vaul";
-
 
 const API_KEY = process.env.GEMINI_API_KEY as string;
 
@@ -199,262 +189,247 @@ Return the output in **valid JSON format** without any additional text.
   }
 };
 
-
 const existingLayouts = [
   {
     id: uuidv4(),
-    slideName: 'Image and text',
-    type: 'imageAndText',
-    className: 'min-h-[200px] p-8 mx-auto flex justify-center items-center',
+    slideName: "Image and text",
+    type: "imageAndText",
+    className: "min-h-[200px] p-8 mx-auto flex justify-center items-center",
     content: {
       id: uuidv4(),
-      type: 'column' as ContentType,
-      name: 'Column',
+      type: "column" as ContentType,
+      name: "Column",
       content: [
         {
           id: uuidv4(),
-          type: 'resizable-column' as ContentType,
-          name: 'Image and text',
-          className: 'border',
+          type: "resizable-column" as ContentType,
+          name: "Image and text",
+          className: "border",
           content: [
             {
               id: uuidv4(),
-              type: 'column' as ContentType,
-              name: 'Column',
+              type: "column" as ContentType,
+              name: "Column",
               content: [
                 {
                   id: uuidv4(),
-                  type: 'image' as ContentType,
-                  name: 'Image',
-                  className: 'p-3',
-                  content: 
-                    '',
-                  alt: 'Title'
+                  type: "image" as ContentType,
+                  name: "Image",
+                  className: "p-3",
+                  content: "",
+                  alt: "Title",
                 },
               ],
             },
             {
               id: uuidv4(),
-              type: 'column' as ContentType,
-              name: 'Column',
+              type: "column" as ContentType,
+              name: "Column",
               content: [
                 {
                   id: uuidv4(),
-                  type: 'heading1' as ContentType,
-                  name: 'Heading1',
-                  content: '',
-                  placeholder: 'Heading1',
+                  type: "heading1" as ContentType,
+                  name: "Heading1",
+                  content: "",
+                  placeholder: "Heading1",
                 },
                 {
                   id: uuidv4(),
-                  type: 'paragraph' as ContentType,
-                  name:'Paragraph',
-                  Content:'',
-                  placeholder:'start typing here',
+                  type: "paragraph" as ContentType,
+                  name: "Paragraph",
+                  Content: "",
+                  placeholder: "start typing here",
                 },
               ],
-              className: 'w-full h-full p-8 flex justify-center items-center',
-              placeholder:'Heading1',  
+              className: "w-full h-full p-8 flex justify-center items-center",
+              placeholder: "Heading1",
             },
           ],
         },
       ],
     },
-  }, 
-  
-  
+  },
 
   {
     id: uuidv4(),
-    slideName: 'Image and text',
-    type: 'imageAndText',
-    className: 'min-h-[200px] p-8 mx-auto flex justify-center items-center',
+    slideName: "Image and text",
+    type: "imageAndText",
+    className: "min-h-[200px] p-8 mx-auto flex justify-center items-center",
     content: {
       id: uuidv4(),
-      type: 'column' as ContentType,
-      name: 'Column',
+      type: "column" as ContentType,
+      name: "Column",
       content: [
         {
           id: uuidv4(),
-          type: 'resizable-column' as ContentType,
-          name: 'Image and text',
-          className: 'border',
+          type: "resizable-column" as ContentType,
+          name: "Image and text",
+          className: "border",
           content: [
             {
               id: uuidv4(),
-              type: 'column' as ContentType,
-              name: 'Column',
+              type: "column" as ContentType,
+              name: "Column",
               content: [
                 {
                   id: uuidv4(),
-                  type: 'image' as ContentType,
-                  name: 'Image',
-                  className: 'p-3',
-                  content: 
-                    '',
-                  alt: 'Title'
+                  type: "image" as ContentType,
+                  name: "Image",
+                  className: "p-3",
+                  content: "",
+                  alt: "Title",
                 },
               ],
             },
             {
               id: uuidv4(),
-              type: 'column' as ContentType,
-              name: 'Column',
+              type: "column" as ContentType,
+              name: "Column",
               content: [
                 {
                   id: uuidv4(),
-                  type: 'heading1' as ContentType,
-                  name: 'Heading1',
-                  content: '',
-                  placeholder: 'Heading1',
+                  type: "heading1" as ContentType,
+                  name: "Heading1",
+                  content: "",
+                  placeholder: "Heading1",
                 },
                 {
                   id: uuidv4(),
-                  type: 'paragraph' as ContentType,
-                  name:'Paragraph',
-                  Content:'',
-                  placeholder:'start typing here',
+                  type: "paragraph" as ContentType,
+                  name: "Paragraph",
+                  Content: "",
+                  placeholder: "start typing here",
                 },
               ],
-              className: 'w-full h-full p-8 flex justify-center items-center',
-              placeholder:'Heading1',  
+              className: "w-full h-full p-8 flex justify-center items-center",
+              placeholder: "Heading1",
             },
           ],
         },
       ],
     },
-  }, 
-
-
-
+  },
 
   {
     id: uuidv4(),
-    slideName: 'Image and text',
-    type: 'imageAndText',
-    className: 'min-h-[200px] p-8 mx-auto flex justify-center items-center',
+    slideName: "Image and text",
+    type: "imageAndText",
+    className: "min-h-[200px] p-8 mx-auto flex justify-center items-center",
     content: {
       id: uuidv4(),
-      type: 'column' as ContentType,
-      name: 'Column',
+      type: "column" as ContentType,
+      name: "Column",
       content: [
         {
           id: uuidv4(),
-          type: 'resizable-column' as ContentType,
-          name: 'Image and text',
-          className: 'border',
+          type: "resizable-column" as ContentType,
+          name: "Image and text",
+          className: "border",
           content: [
             {
               id: uuidv4(),
-              type: 'column' as ContentType,
-              name: 'Column',
+              type: "column" as ContentType,
+              name: "Column",
               content: [
                 {
                   id: uuidv4(),
-                  type: 'image' as ContentType,
-                  name: 'Image',
-                  className: 'p-3',
-                  content: 
-                    '',
-                  alt: 'Title'
+                  type: "image" as ContentType,
+                  name: "Image",
+                  className: "p-3",
+                  content: "",
+                  alt: "Title",
                 },
               ],
             },
             {
               id: uuidv4(),
-              type: 'column' as ContentType,
-              name: 'Column',
+              type: "column" as ContentType,
+              name: "Column",
               content: [
                 {
                   id: uuidv4(),
-                  type: 'heading1' as ContentType,
-                  name: 'Heading1',
-                  content: '',
-                  placeholder: 'Heading1',
+                  type: "heading1" as ContentType,
+                  name: "Heading1",
+                  content: "",
+                  placeholder: "Heading1",
                 },
                 {
                   id: uuidv4(),
-                  type: 'paragraph' as ContentType,
-                  name:'Paragraph',
-                  Content:'',
-                  placeholder:'start typing here',
+                  type: "paragraph" as ContentType,
+                  name: "Paragraph",
+                  Content: "",
+                  placeholder: "start typing here",
                 },
               ],
-              className: 'w-full h-full p-8 flex justify-center items-center',
-              placeholder:'Heading1',  
+              className: "w-full h-full p-8 flex justify-center items-center",
+              placeholder: "Heading1",
             },
           ],
         },
       ],
     },
-  }, 
-
-
+  },
 
   {
     id: uuidv4(),
-    slideName: 'Image and text',
-    type: 'imageAndText',
-    className: 'min-h-[200px] p-8 mx-auto flex justify-center items-center',
+    slideName: "Image and text",
+    type: "imageAndText",
+    className: "min-h-[200px] p-8 mx-auto flex justify-center items-center",
     content: {
       id: uuidv4(),
-      type: 'column' as ContentType,
-      name: 'Column',
+      type: "column" as ContentType,
+      name: "Column",
       content: [
         {
           id: uuidv4(),
-          type: 'resizable-column' as ContentType,
-          name: 'Image and text',
-          className: 'border',
+          type: "resizable-column" as ContentType,
+          name: "Image and text",
+          className: "border",
           content: [
             {
               id: uuidv4(),
-              type: 'column' as ContentType,
-              name: 'Column',
+              type: "column" as ContentType,
+              name: "Column",
               content: [
                 {
                   id: uuidv4(),
-                  type: 'image' as ContentType,
-                  name: 'Image',
-                  className: 'p-3',
-                  content: 
-                    '',
-                  alt: 'Title'
+                  type: "image" as ContentType,
+                  name: "Image",
+                  className: "p-3",
+                  content: "",
+                  alt: "Title",
                 },
               ],
             },
             {
               id: uuidv4(),
-              type: 'column' as ContentType,
-              name: 'Column',
+              type: "column" as ContentType,
+              name: "Column",
               content: [
                 {
                   id: uuidv4(),
-                  type: 'heading1' as ContentType,
-                  name: 'Heading1',
-                  content: '',
-                  placeholder: 'Heading1',
+                  type: "heading1" as ContentType,
+                  name: "Heading1",
+                  content: "",
+                  placeholder: "Heading1",
                 },
                 {
                   id: uuidv4(),
-                  type: 'paragraph' as ContentType,
-                  name:'Paragraph',
-                  Content:'',
-                  placeholder:'start typing here',
+                  type: "paragraph" as ContentType,
+                  name: "Paragraph",
+                  Content: "",
+                  placeholder: "start typing here",
                 },
               ],
-              className: 'w-full h-full p-8 flex justify-center items-center',
-              placeholder:'Heading1',  
+              className: "w-full h-full p-8 flex justify-center items-center",
+              placeholder: "Heading1",
             },
           ],
         },
       ],
     },
-  }, 
-
-]  
-
-
+  },
+];
 
 const generateImageUrl = async (prompt: string): Promise<string> => {
   try {
@@ -475,27 +450,23 @@ Important Notes:
 Example Use Cases: Business presentations, educational slides, professional designs.
 `;
 
-const result = await model.generateContent([{ text: improvedPrompt }]);
+    const result = await model.generateContent([{ text: improvedPrompt }]);
 
-        // Correctly access the response structure
-        const response = await result.response;
-        const imageUrl = response.text(); // This extracts the generated image URL
+    // Correctly access the response structure
+    const response = await result.response;
+    const imageUrl = response.text(); // This extracts the generated image URL
 
-        if (imageUrl) {
-            console.log("✅ Image generated successfully:", imageUrl);
-            return imageUrl;
-        }
+    if (imageUrl) {
+      console.log("✅ Image generated successfully:", imageUrl);
+      return imageUrl;
+    }
 
-        return "https://via.placeholder.com/1024"; 
+    return "https://via.placeholder.com/1024";
   } catch (error) {
     console.error("Failed to generate image:", error);
     return "https://via.placeholder.com/1024";
   }
 };
-
-
-
-
 
 const findImageComponents = (layout: ContentItem): ContentItem[] => {
   const images = [];
@@ -519,7 +490,6 @@ const findImageComponents = (layout: ContentItem): ContentItem[] => {
   return images;
 };
 
-
 const replaceImagePlaceholders = async (layout: Slide) => {
   const imageComponents = findImageComponents(layout.content);
   console.log("🟢 Found image components:", imageComponents);
@@ -530,37 +500,144 @@ const replaceImagePlaceholders = async (layout: Slide) => {
     );
   }
 };
-           
-
-
 
 export const generateLayoutsJson = async (outlineArray: string[]) => {
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
-  const prompt = `
-  You are a highly creative AI that generates JSON-based layouts for presentations. I will 
-  provide you with an array of outlines, and for each outline, you must generate a unique and 
-  creative layout. Use the existing layouts as examples for structure and design, and generate 
-  unique designs based on the provided outline.
-  
-  ### Guidelines:
-  1. Write layouts based on the specific outline provided.
-  2. Use diverse and engaging designs, ensuring each layout is unique.
-  3. Adhere to the structure of existing layouts but add new styles or components if needed.
-  4. Fill placeholder data into content fields where required.
-  5. Generate unique image placeholders for the 'content' property of image components and also 
-     alt text according to the outline.
-  6. Ensure proper formatting and schema alignment for the output JSON.
+  //
+  const prompt = `### Guidelines
+provide you with a pattern and a format to follow, and for each outline, you must generate unique layouts and contents and give me the output in the JSON format expected.
 
-  ### Example Layouts:
-  ${JSON.stringify(existingLayouts, null, 2)}
+Our final JSON output is a combination of layouts and elements. The available LAYOUTS TYPES are as follows: "accentLeft", "accentRight", "imageAndText", "textAndImage", "twoColumns", "twoColumnsWithHeadings", "threeColumns", "threeColumnsWithHeadings", "fourColumns", "twoImageColumns", "threeImageColumns", "fourImageColumns", "tableLayout".
 
-  ### Outline Array:
-  ${JSON.stringify(outlineArray)}
+The available CONTENT TYPES are "heading1", "heading2", "heading3", "heading4", "title", "paragraph", "table", "resizable-column", "image", "blockquote", "numberedList", "bulletList", "todoList", "calloutBox", "codeBlock", "tableOfContents", "divider", "column"
 
-For each entry in the outline array, generate:
-- A unique JSON layout with creative designs.
-- Properly filled content, including placeholders for image components.
-- Clear and well-structured JSON data.
+Use these outlines as a starting point for the content of the presentations  
+${JSON.stringify(outlineArray)}  
+
+The output must be an array of JSON objects.  
+1. Write layouts based on the specific outline provided. Do not use types that are not mentioned in the example layouts.  
+2. Ensuring each layout is unique.  
+3. Adhere to the structure of existing layouts  
+4. Fill placeholder data into content fields where required.  
+5. Generate unique image placeholders for the 'content' property of image components and also alt text according to the outline.  
+6. Ensure proper formatting and schema alignment for the output JSON.  
+7. First create LAYOUTS TYPES at the top most level of the JSON output as follows 
+${JSON.stringify([
+  {
+    slideName: "Blank card",
+    type: "blank-card",
+    className: "p-8 mx-auto flex justify-center items-center min-h-[200px]",
+    Content: {},
+  },
+])}
+
+8. The content property of each LAYOUTS TYPE should start with “column” and within the columns content  
+property you can use any of the CONTENT TYPES I provided above. Resizable-column, column and other  
+multi element contents should be an array because you can have more elements inside them nested.  
+Static elements like title and paragraph should have content set to a string. Here is an example of  
+what 1 layout with 1 column with 1 title inside would look like:
+${JSON.stringify([
+  {
+    slideName: "Blank card",
+    type: "blank-card",
+    className: "p-8 mx-auto flex justify-center items-center min-h-[200px]",
+    content: {
+      id: uuidv4(),
+      type: "column" as ContentType,
+      name: "Column",
+      content: [
+        {
+          id: uuidv4(),
+          type: "title" as ContentType,
+          name: "Title",
+          content: "",
+          placeholder: "Untitled Card",
+        },
+      ],
+    },
+  },
+])}
+
+9. Here is a final example of an example output for you to get an idea
+${JSON.stringify([
+  {
+    id: uuidv4(),
+    slideName: "Blank card",
+    type: "blank-card",
+    className: "p-8 mx-auto flex justify-center items-center min-h-[200px]",
+    content: {
+      id: uuidv4(),
+      type: "column" as ContentType,
+      name: "Column",
+      content: [
+        {
+          id: uuidv4(),
+          type: "title" as ContentType,
+          name: "Title",
+          content: "",
+          placeholder: "Untitled Card",
+        },
+      ],
+    },
+  },
+  {
+    id: uuidv4(),
+    slideName: "Accent left",
+    type: "accentLeft",
+    className: "min-h-[300px]",
+    content: {
+      id: uuidv4(),
+      type: "column" as ContentType,
+      name: "Column",
+      restrictDropTo: true,
+      content: [
+        {
+          id: uuidv4(),
+          type: "resizable-column" as ContentType,
+          name: "Resizable column",
+          restrictToDrop: true,
+          content: [
+            {
+              id: uuidv4(),
+              type: "image" as ContentType,
+              name: "Image",
+              content:
+                "https://plus.unsplash.com/premium_photo-1736338574763-6cc5bb4b734f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNjJ8fHxlbnwwfHx8fHw%3D",
+              alt: "Title",
+            },
+            {
+              id: uuidv4(),
+              type: "column" as ContentType,
+              name: "Column",
+              content: [
+                {
+                  id: uuidv4(),
+                  type: "heading1" as ContentType,
+                  name: "Heading1",
+                  content: "",
+                  placeholder: "Heading1",
+                },
+                {
+                  id: uuidv4(),
+                  type: "paragraph" as ContentType,
+                  name: "Paragraph",
+                  content: "",
+                  placeholder: "start typing here",
+                },
+              ],
+              className: "w-full h-full p-8 flex justify-center items-center",
+              placeholder: "Heading1",
+            },
+          ],
+        },
+      ],
+    },
+  },
+])}
+             
+            
+
+ 
 For Images
 - The alt text should describe the image clearly and concisely.
 - Focus on the main subject(s) of the image and any relevant details such as colors, shapes, people, or objects.
@@ -568,10 +645,10 @@ For Images
 - Avoid using terms like "image of" or "picture of," and instead focus directly on the content and meaning.
 
 Output the layouts in JSON format. Ensure there are no duplicate layouts across the array.
-  `
+  `;
 
   try {
-    console.log('Generating layouts...')
+    console.log("Generating layouts...");
     const completion = await model.generateContent(prompt);
     const responseText = completion.response.text().trim(); // Ensure trimmed response
 
@@ -585,73 +662,71 @@ Output the layouts in JSON format. Ensure there are no duplicate layouts across 
 
     let jsonResponse;
     try {
-      jsonResponse = JSON.parse(responseText.replace(/```json|```/g,'')) 
-      await Promise.all(jsonResponse.map(replaceImagePlaceholders))
+      jsonResponse = JSON.parse(responseText.replace(/```json|```/g, ""));
+      await Promise.all(jsonResponse.map(replaceImagePlaceholders));
     } catch (error) {
-      console.warn('Error', error);
-      throw new Error('Invalid JSON format received from AI') // Return plain text if not JSON
+      console.warn("Error", error);
+      throw new Error("Invalid JSON format received from AI"); // Return plain text if not JSON
     }
 
-    console.log('Layouts generated successfully')
+    console.log("Layouts generated successfully");
     return { status: 200, data: jsonResponse };
   } catch (error) {
     console.error("ERROR:", error);
     return { status: 500, error: "Internal server error" };
   }
+};
 
-}
-
-
-  export const generateLayouts = async (projectId: string, theme: string) => {
-    try {
-      if (!projectId) {
-        return { status: 400, error: 'Project ID is required' }
-      }
-      const user = await currentUser()
-      if (!user) {
-        return {
-          status: 403, error: 'User not authenticated'
-        }
-      }
-      const userExist = await client.user.findUnique({
-        where: { clerkId: user.id },
-      })
-      if (!userExist || !userExist.subscription) {
-        return {
-          status: 403,
-          error: userExist?.subscription
-            ? 'User does not have an active subscription'
-            : 'User not found in the database',
-        }
-      }
-
-      const project = await client.project.findUnique({
-        where: { id: projectId, isDeleted: false },
-      })
-
-      if (!project) {
-        return { status: 404, error: 'Project not found' }
-      }
-
-      if (!project.outlines || project.outlines.length === 0) {
-        return { status: 400, error: 'Project does not have any outlines' }
-      }
-
-      const layouts = await generateLayoutsJson(project.outlines)
-
-      if (layouts.status !== 200) {
-        return layouts
-      }
-
-      await client.project.update({
-        where: { id: projectId },
-        data: { slides: layouts.data, themeName: theme },
-      })
-
-      return { status: 200, data: layouts.data }
+export const generateLayouts = async (projectId: string, theme: string) => {
+  try {
+    if (!projectId) {
+      return { status: 400, error: "Project ID is required" };
     }
-    catch (error) {
-      console.error('🔴 ERROR:', error)
-      return { status: 500, error: 'Internal server error', data: [] }
+    const user = await currentUser();
+    if (!user) {
+      return {
+        status: 403,
+        error: "User not authenticated",
+      };
     }
+    const userExist = await client.user.findUnique({
+      where: { clerkId: user.id },
+    });
+    if (!userExist || !userExist.subscription) {
+      return {
+        status: 403,
+        error: userExist?.subscription
+          ? "User does not have an active subscription"
+          : "User not found in the database",
+      };
+    }
+
+    const project = await client.project.findUnique({
+      where: { id: projectId, isDeleted: false },
+    });
+
+    if (!project) {
+      return { status: 404, error: "Project not found" };
+    }
+
+    if (!project.outlines || project.outlines.length === 0) {
+      return { status: 400, error: "Project does not have any outlines" };
+    }
+
+    const layouts = await generateLayoutsJson(project.outlines);
+
+    if (layouts.status !== 200) {
+      return layouts;
+    }
+
+    await client.project.update({
+      where: { id: projectId },
+      data: { slides: layouts.data, themeName: theme },
+    });
+
+    return { status: 200, data: layouts.data };
+  } catch (error) {
+    console.error("🔴 ERROR:", error);
+    return { status: 500, error: "Internal server error", data: [] };
   }
+};
