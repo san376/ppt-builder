@@ -433,7 +433,7 @@ const existingLayouts = [
 
 const generateImageUrl = async (prompt: string): Promise<string> => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const improvedPrompt = `
 Create a highly realistic, professional image based on the following description. The image should look as if captured in real life, with attention to detail, lighting, and texture.
@@ -461,10 +461,10 @@ Example Use Cases: Business presentations, educational slides, professional desi
       return imageUrl;
     }
 
-    return "https://via.placeholder.com/1024";
+    return "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent";
   } catch (error) {
     console.error("Failed to generate image:", error);
-    return "https://via.placeholder.com/1024";
+    return "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent";
   }
 };
 
